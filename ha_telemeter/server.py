@@ -3,6 +3,7 @@ import telemeter
 from string import Template
 import os
 from sys import exit
+import requests
 
 
 from flask import Flask  # Import the Flask class
@@ -29,13 +30,11 @@ if TELENET_PASSWORD is None:
 if TELENET_USERNAME is None or TELENET_PASSWORD is None:
     exit()
 
-telenet_session = telemeter.TelenetSession()
-telenet_session.login(TELENET_USERNAME, TELENET_PASSWORD)
-
-
-@app.route("/")
+@app.route("/current")
 def current_period():
     print('GET current_period()')
+    telenet_session = telemeter.TelenetSession()
+    telenet_session.login(TELENET_USERNAME, TELENET_PASSWORD)
     my_telemeter = telenet_session.telemeter()  
 
     current_period_start = my_telemeter.period_start.strftime("%d/%m/%Y")
@@ -53,3 +52,10 @@ def current_period():
         offpeak=current_period_usage_offpeak,
         total=current_period_usage_total
     )
+
+@app.route("/")
+def debug():
+    print("GET debug()")
+    response = requests.get("https://api.prd.telenet.be/ocapi/oauth/userdetails")
+    contents = response.text
+    return contents
