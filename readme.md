@@ -8,8 +8,8 @@ The application is available as a Docker image.
 
 It requires your Telenet credentials via ENV variables:
 
-- `TELEMETER_USERNAME`
-- `TELEMETER_PASSWORD`
+- `TELENET_USERNAME`
+- `TELENET_PASSWORD`
 
 The Docker container exposes the API through port `5000` and you can map that to whatever you want.
 
