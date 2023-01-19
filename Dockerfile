@@ -23,3 +23,7 @@ USER appuser
 
 # During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
 CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app.server:app"]
+
+LABEL org.opencontainers.image.source=https://github.com/bramvandenbussche/ha-telemeter
+LABEL org.opencontainers.image.description="HA Telemeter"
+LABEL org.opencontainers.image.licenses=Unlicense
