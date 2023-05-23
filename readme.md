@@ -1,5 +1,7 @@
 # HA Telemeter
 
+⚠️ This project is no longer being maintained because there's [a much better alternative](https://github.com/myTselection/telenet_telemeter)! ⚠️
+
 This repository contains a minimal Flask application that allows reading your Telemeter data and exposing it through a simple API. This API can easily be integrated with Home Assistant to add your Telemeter information to your dashboards or automations.
 
 ## Installation
